@@ -39,4 +39,30 @@ class Crayon {
     Crayon(name: "Blue Green", red: 13, green: 152, blue: 186, hex: "#0D98BA"),
     Crayon(name: "Blue Violet", red: 115, green: 102, blue: 189, hex: "#7366BD")
   ]
+    
+  static func colorSections() -> [[Crayon]] {
+    
+    // sorting by the value of red withing each color
+    let sortByInitialCrayonColorRedValue = Crayon.allTheCrayons.sorted {$0.red < $1.red}
+    
+    
+    //Getting the unique values of the colors using red as the baseline
+    
+    let crayonRedValueNum = Set(sortByInitialCrayonColorRedValue.map {$0.red})
+    var crayonSectArr = Array(repeating: [Crayon](), count:sortByInitialCrayonColorRedValue.count)
+    var currentIndex = 0
+    var currentColorSelection = sortByInitialCrayonColorRedValue.first?.red
+    
+    for crayonColorValue in sortByInitialCrayonColorRedValue {
+        if crayonColorValue.red == currentColorSelection {
+        crayonSectArr[currentIndex].append(crayonColorValue)
+        } else {
+            currentIndex += 1
+            currentColorSelection = crayonColorValue.red
+            crayonSectArr[currentIndex].append(crayonColorValue)
+        }
+    }
+    
+    return crayonSectArr
+    }
 }
