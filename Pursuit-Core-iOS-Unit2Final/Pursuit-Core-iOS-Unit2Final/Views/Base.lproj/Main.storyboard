@@ -55,15 +55,12 @@
         <!--Selected Color Value ChangerVC-->
         <scene sceneID="4mR-N4-FyU">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ecX-Qk-oaC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="2w1-0a-EwN" customClass="SelectedColorValueChangerVC" customModule="Pursuit_Core_iOS_Unit2Final" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fH7-aD-RvO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SeU-hj-Wlw">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="colorName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZE-jl-GNi">
                                 <rect key="frame" x="20" y="112" width="374" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -82,7 +79,7 @@
                                 <rect key="frame" x="18" y="252" width="378" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="redValueChangeSlider:" destination="2w1-0a-EwN" eventType="valueChanged" id="GlU-LH-QtX"/>
+                                    <action selector="redSliderAction:" destination="2w1-0a-EwN" eventType="valueChanged" id="dhi-s5-4ad"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Green Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Er4-yw-1EV">
@@ -96,7 +93,7 @@
                                 <rect key="frame" x="18" y="365" width="378" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="greenValueChangeSlider:" destination="2w1-0a-EwN" eventType="valueChanged" id="166-eS-Upl"/>
+                                    <action selector="greensliderAction:" destination="2w1-0a-EwN" eventType="valueChanged" id="m5B-p1-KOy"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Blue Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITa-eb-zb7">
@@ -110,7 +107,7 @@
                                 <rect key="frame" x="18" y="479" width="378" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="blueValueChangeSlider:" destination="2w1-0a-EwN" eventType="valueChanged" id="pA7-qn-I2f"/>
+                                    <action selector="blueSliderAction:" destination="2w1-0a-EwN" eventType="valueChanged" id="2u3-c1-G9w"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alpha Value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XuY-fi-OeZ">
@@ -127,14 +124,16 @@
                                     <action selector="alphaValueChangeStepper:" destination="2w1-0a-EwN" eventType="valueChanged" id="FFo-9M-oJ4"/>
                                 </connections>
                             </stepper>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDA-sb-OUD">
+                                <rect key="frame" x="167" y="728" width="80" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Color Reset"/>
+                                <connections>
+                                    <action selector="colorReset:" destination="2w1-0a-EwN" eventType="touchUpInside" id="Fgv-io-Uof"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="SeU-hj-Wlw" firstAttribute="top" secondItem="pbh-H6-CaS" secondAttribute="top" id="3Oj-9p-V8P"/>
-                            <constraint firstItem="SeU-hj-Wlw" firstAttribute="bottom" secondItem="pbh-H6-CaS" secondAttribute="bottom" id="9Dx-rQ-0zi"/>
-                            <constraint firstItem="SeU-hj-Wlw" firstAttribute="trailing" secondItem="pbh-H6-CaS" secondAttribute="trailing" id="DPg-zh-5Pl"/>
-                            <constraint firstItem="SeU-hj-Wlw" firstAttribute="leading" secondItem="pbh-H6-CaS" secondAttribute="leading" id="LmG-FB-oqe"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pbh-H6-CaS"/>
                     </view>
                     <navigationItem key="navigationItem" id="jRE-5h-hHa"/>
@@ -143,15 +142,14 @@
                         <outlet property="alphaValueLabelStepper" destination="XuY-fi-OeZ" id="EaZ-KS-hCf"/>
                         <outlet property="blueValueChangerSlider" destination="QBM-Nb-jzr" id="TvN-W3-si4"/>
                         <outlet property="blueValueLabelSlider" destination="ITa-eb-zb7" id="brU-hW-VcG"/>
+                        <outlet property="colorBackground" destination="fH7-aD-RvO" id="sfy-Qw-NVv"/>
                         <outlet property="colorNameInCCView" destination="EZE-jl-GNi" id="aeK-tr-858"/>
-                        <outlet property="crayonColorBox" destination="SeU-hj-Wlw" id="iaa-M5-ly4"/>
                         <outlet property="greenValueChangerSlider" destination="KLp-1c-cGj" id="KxW-ba-cfS"/>
                         <outlet property="greenValueLabelSlider" destination="Er4-yw-1EV" id="FOy-BR-GQc"/>
                         <outlet property="redValueChangerSlider" destination="hIi-DI-OrA" id="430-Kz-w2r"/>
                         <outlet property="redValueLabelSlider" destination="gC5-S2-Ln4" id="9lB-dA-dd9"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ecX-Qk-oaC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1882.608695652174" y="117.85714285714285"/>
         </scene>
