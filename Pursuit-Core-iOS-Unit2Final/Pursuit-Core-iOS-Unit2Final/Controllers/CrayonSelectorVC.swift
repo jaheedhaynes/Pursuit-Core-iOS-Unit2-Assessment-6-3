@@ -12,7 +12,7 @@ class CrayonSelectorVC: UIViewController {
     
     @IBOutlet weak var colorSelectionTable: UITableView!
     
-    var crayons = [Crayon](){
+    var crayons = [Crayon]() {
         didSet {
             colorSelectionTable.reloadData()
         }
@@ -31,22 +31,27 @@ class CrayonSelectorVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let crayonDetail = segue.destination as?
-            SelectedColorValueChangerVC,
-            let indexPath = colorSelectionTable.indexPathForSelectedRow
-            else {return}
-        
-        let crayonDetailInfo = crayons[indexPath.row]
-        
-        crayonDetail.navigationItem.title = crayonDetailInfo.name
+
+    
+           guard let detailViewController = segue.destination as? SelectedColorValueChangerVC,
+                 let indexPath = colorSelectionTable.indexPathForSelectedRow else{
+                fatalError("You broke the APP!!!")
+            }
         
         
+            let selectedCrayon = crayons[indexPath.row]
+        
+        detailViewController.crayonDetailInfo = selectedCrayon
+        
+        
+        
+    }
         
         
         
     }
     
-}
+
 
 //--------------------------------------------
 
@@ -67,8 +72,7 @@ extension CrayonSelectorVC: UITableViewDataSource {
         cell.textLabel?.text = crayon.name
         cell.detailTextLabel?.text = crayon.hex
         
-        cell.backgroundColor = UIColor(displayP3Red: CGFloat(crayon.red)/255, green: CGFloat(crayon.green)/255, blue: CGFloat(crayon.blue)/255
-            , alpha: 1.0)
+        cell.backgroundColor = UIColor(displayP3Red: CGFloat(crayon.red / 255), green: CGFloat(crayon.green / 255), blue: CGFloat(crayon.blue / 255) , alpha: 1.0)
         
         return cell
     }
