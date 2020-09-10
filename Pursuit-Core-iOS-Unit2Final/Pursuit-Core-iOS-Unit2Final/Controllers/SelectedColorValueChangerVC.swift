@@ -28,6 +28,33 @@ class SelectedColorValueChangerVC: UIViewController {
     @IBOutlet weak var alphaValueLabelStepper: UILabel!
     @IBOutlet weak var alphaValueChangerStepper: UIStepper!
     
+    var alphaDefaultValue = Float(1)
+    lazy var alphaValueUpdate = alphaDefaultValue
+    
+    var redValue: Float = 0.2 {
+        didSet {
+            redValueLabelSlider.text = String(format: "%.02f", redValueChangerSlider.value)
+        }
+    }
+    
+    var greenValue: Float = 0.2 {
+        didSet {
+            greenValueLabelSlider.text = String(format: "%.02f", greenValueChangerSlider.value)
+        }
+    }
+    
+    var blueValue: Float = 0.2 {
+        didSet {
+            blueValueLabelSlider.text = String(format: "%.02f", blueValueChangerSlider.value)
+        }
+    }
+    
+    var alphaValue: Double = 1.0 {
+        didSet {
+            alphaValueLabelStepper.text = String(format: "%.01f", alphaValueChangerStepper.value)
+        }
+    }
+    
     
     
     override func viewDidLoad() {
@@ -62,16 +89,18 @@ class SelectedColorValueChangerVC: UIViewController {
     // methods for sliders
     
     @IBAction func redSliderAction(_ sender: UISlider) {
-//       redValueChangerSlider.value = sender.value
+        
               colorBackground.backgroundColor = UIColor(red: CGFloat(redValueChangerSlider.value), green: CGFloat(greenValueChangerSlider.value), blue: CGFloat(blueValueChangerSlider.value), alpha: 1)
     }
     
     @IBAction func greensliderAction(_ sender: UISlider) {
+        
        greenValueChangerSlider.value = sender.value
        colorBackground.backgroundColor = UIColor(red: CGFloat(redValueChangerSlider.value), green: CGFloat(greenValueChangerSlider.value), blue: CGFloat(blueValueChangerSlider.value), alpha: view.alpha)
     }
     
     @IBAction func blueSliderAction(_ sender: UISlider) {
+        
      blueValueChangerSlider.value = sender.value
      colorBackground.backgroundColor = UIColor(red: CGFloat(redValueChangerSlider.value), green: CGFloat(greenValueChangerSlider.value), blue: CGFloat(blueValueChangerSlider.value), alpha: view.alpha)
     }
@@ -90,6 +119,17 @@ class SelectedColorValueChangerVC: UIViewController {
                
                colorBackground.alpha = 1.0
     }
+    
+    //----------------------------------------------
+    
+    @IBAction func stepperPressed(_ sender: UIStepper) {
+        alphaValue = sender.value
+               
+               self.view.backgroundColor = UIColor(displayP3Red: CGFloat(redValue), green: CGFloat(greenValue), blue: CGFloat(blueValue), alpha: CGFloat(alphaValue))
+
+        print("stepper pressed")
+    }
+    
     
     
 
